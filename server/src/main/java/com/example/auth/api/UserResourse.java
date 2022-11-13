@@ -1,6 +1,5 @@
 package com.example.auth.api;
 
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -25,7 +24,6 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.stream;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @Slf4j
@@ -56,23 +54,17 @@ public class UserResourse {
                 HashMap<String, String> res = new HashMap<>();
                 res.put("logout", "ok");
                 new SecurityContextLogoutHandler().logout(request, response, auth);
+                log.info("успешный выход из приложения");
                 return new ResponseEntity<>(res, HttpStatus.OK);
             }
             catch (Exception exception) {
-                log.error("Error logging in: {}", exception.getMessage());
+                log.error("Ошибка при выходе ииз приложения: {}", exception.getMessage());
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
         }
         else {
             return new ResponseEntity<>("provide required token",HttpStatus.FORBIDDEN);
         }
-//
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//
-//        if (auth != null){
-//            new SecurityContextLogoutHandler().logout(request, response, auth);
-//        }
-//        return "redirect:/login?logout";
     }
 
     @GetMapping("/user")

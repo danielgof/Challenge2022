@@ -33,3 +33,6 @@ use nginx to setup proxy in production
 
 ## Архитектура
 <img src="./pic.jpg" alt="Alt text" title="Optional title">
+ 
+## Видео-презентация
+- https://disk.yandex.ru/i/5Znu-K_XYf1HJw

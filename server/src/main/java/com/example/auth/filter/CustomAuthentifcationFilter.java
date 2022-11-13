@@ -3,13 +3,9 @@ package com.example.auth.filter;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -57,7 +53,7 @@ public class CustomAuthentifcationFilter extends UsernamePasswordAuthenticationF
         tokens.put("", "");
         StringBuilder mapAsString = new StringBuilder("{");
         for (String key : tokens.keySet()) {
-            mapAsString.append(key + "=" + tokens.get(key) + ", ");
+            mapAsString.append(key + ":" + tokens.get(key) + ", ");
         }
         mapAsString.delete(mapAsString.length()-2, mapAsString.length()).append("}");
 
